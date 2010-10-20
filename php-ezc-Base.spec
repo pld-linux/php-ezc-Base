@@ -29,6 +29,10 @@ In PEAR status of this package is: %{status}.
 %prep
 %pear_package_setup
 
+install -d examples
+mv docs/Base/docs/tutorial* examples
+mv docs/Base/docs/repos examples
+
 %build
 packagexml2cl package.xml > ChangeLog
 
@@ -36,6 +40,9 @@ packagexml2cl package.xml > ChangeLog
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_pear_dir}
 %pear_package_install
+
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # don't care for tests
 rm -rf $RPM_BUILD_ROOT%{php_pear_dir}/tests/%{pearname}
@@ -46,9 +53,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog install.log
-%doc docs/Base/*
+%doc docs/Base/docs/*
 %{php_pear_dir}/.registry/.channel.*/*.reg
 %dir %{php_pear_dir}/ezc
 %{php_pear_dir}/ezc/autoload/base_autoload.php
 %{php_pear_dir}/ezc/Base
 %{php_pear_dir}/data/Base
+%{_examplesdir}/%{name}-%{version}
