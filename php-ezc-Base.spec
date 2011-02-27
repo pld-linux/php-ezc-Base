@@ -4,7 +4,7 @@
 Summary:	%{pearname} - The Base package provides the basic infrastructure that all packages rely on
 Name:		php-ezc-Base
 Version:	1.8
-Release:	1
+Release:	2
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://components.ez.no/get/%{pearname}-%{version}.tgz
@@ -56,6 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/Base/docs/*
 %{php_pear_dir}/.registry/.channel.*/*.reg
 %dir %{php_pear_dir}/ezc
+%dir %{php_pear_dir}/ezc/autoload
 %{php_pear_dir}/ezc/autoload/base_autoload.php
 %{php_pear_dir}/ezc/Base
 %{php_pear_dir}/data/Base
