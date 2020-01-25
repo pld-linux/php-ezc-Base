@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.php
 %define		status		stable
 %define		pearname	Base
 Summary:	%{pearname} - The Base package provides the basic infrastructure that all packages rely on
